@@ -1,3 +1,3 @@
 # DiscordBot
 
-Creating a discord bot
+Creating a discord bot!
