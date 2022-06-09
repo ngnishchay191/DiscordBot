@@ -20,10 +20,12 @@ module.exports = {
 
         let member = message.member 
 
+        //if a command is devOnly then checking if the member is onwer to execute the command
         if (command.devOnly && !owners.includes(member.id)){
             return message.reply("This command is only available to the bot owners")
         }
 
+        //checking if have permissions for the command
         if (command.permissions && member.permissions.missing(command.permissions).length !== 0){
             return message.reply("You do not have permission to use this command")
         }
@@ -34,6 +36,7 @@ module.exports = {
         catch (err) {
             let errMsg = err.toString()
 
+            // for custom errors for future
             if (errMsg.startsWith("?")) {
                 errMsg = errMsg.slice(1)
                 await message.reply(errMsg)
